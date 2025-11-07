@@ -1,18 +1,16 @@
 {
   "version": 2,
-  "env": {
-    "CI": "false"
-  },
+  "buildCommand": "cd frontend && npm ci && npm run build",
+  "installCommand": "cd frontend && npm ci",
+  "outputDirectory": "frontend/dist",
+  "framework": "vite",
   "builds": [
     {
       "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "frontend/dist" }
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/frontend/dist/$1" }
   ]
 }
-
-
